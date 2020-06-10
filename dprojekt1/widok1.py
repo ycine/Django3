@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-# from .formularz1 import formularz
+from .forms import Model1Form
 
 
 def strona_glowna(request):
@@ -18,10 +18,12 @@ def o_stronie(request):
 
 
 def szablon(request):
-    val1 = request.POST.get('id')
-    val2 = request.POST.get('imie')
-    val3 = request.POST.get('nazwisko')
-    val4 = request.POST.get('email')
+    model1form = Model1Form(request.POST or None)
+    if model1form.is_valid():
+        print(request.POST)
+        imie = model1form.cleaned_data['imie']
+        obj = Model1Form.imie.create(**model1form.cleaned_data)
+        model1form = Model1Form()
     return render(request, "szablon.html")
 
 
