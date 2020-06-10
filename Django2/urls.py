@@ -1,4 +1,4 @@
-"""Django2 URL Configuration
+"""dprojekt1 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from .widok1 import (strona_glowna, o_stronie, kontakt, szablon, szablon1,add)
 urlpatterns = [
+    path('', strona_glowna),
     path('admin/', admin.site.urls),
+    path('kontakt/', kontakt),
+    path('ostronie/', o_stronie),
+    path('szablon/', szablon),
+    path('szablon1/', szablon1),
+    path('add/', add)
 ]
+

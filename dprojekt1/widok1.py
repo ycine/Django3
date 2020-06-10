@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .formularz1 import formularz
+# from .formularz1 import formularz
 
 
 def strona_glowna(request):
