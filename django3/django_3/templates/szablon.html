@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>MCin</title>
 
-<!--    <link rel="stylesheet" type="text/css" href="{% static 'neaty/css/bootstrap.min.css' %}">-->
+
 </head>
 <body bgcolor="#da9d84">
 <h1><i><font color="#1f6fff">Witaj na stronie MCin company</font></i> </h1>
@@ -19,12 +19,12 @@
 <p style="text-align:center; font-size:200%;"><font color="#6a3260">   Małymi kroczkami..      </font></p>
 <form method="post" action=".">
     {% csrf_token %}
-    Wprowadź ID: <input type="number" name="id"> <br>
+    Wprowadź Numer: <input type="number" name="numer"> <br>
     Wprowadź Imie: <input type="text" name="imie"> <br>
     Wprowadź Nazwisko: <input type="text" name="nazwisko"> <br>
     Wprowadź Email: <input type="email" name="email"> <br>
     <button type="submit">Zatwierdź</button><br>
-<!--    <output name="wynik" for="numer1 numer2"></output>-->
+
 </form>
 
 </body>
