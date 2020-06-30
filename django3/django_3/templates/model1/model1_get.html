@@ -1,0 +1,46 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+
+
+</head>
+<body bgcolor="coral">
+<h1><font color="#1f6fyf">CRUD GET</font> </h1>
+
+
+<form action="/szablon/">
+    <input type="submit" value="wprowadz obiekty" />
+</form>
+
+<!-- TUTAJ W PETLI FOR JEST WARTOSC ZE SLOWNIKA CONTEXT W VIEW -->
+{% block content1 %}
+        {% for i in obiekty %}
+          <p>{{i.numer}} 
+           {{i.imie}}
+           {{i.nazwisko}}
+           {{i.email}}</p>
+           
+            <a href="{% url 'szablon_update' i.id %}">klik</a>
+
+            <form action="{% url 'szablon_delete' i.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" >usun</button>
+            </form>
+
+            <!-- <form action="{% url 'szablon_update' i.id %}">
+
+                
+
+                <input type="submit" value="update"  />
+                <input type="submit" value="delete" />
+            </form>  -->
+        {% endfor %}
+
+{% endblock content1 %}
+</body>
+</html>

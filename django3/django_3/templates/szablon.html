@@ -5,18 +5,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MCin</title>
+    <title>CRUD</title>
 
 
 </head>
 <body bgcolor="#da9d84">
-<h1><i><font color="#1f6fff">Witaj na stronie MCin company</font></i> </h1>
-<h1><b><font color="#8fe816">Nic tu ciekawego..</font></b> </h1>
+<h1><font color="#1f6fff">CRUD POST</font> </h1>
 
-<font color="#67d54a">Ale kiedyś może.. coś z tego będzie..</font>
 
-<p style="font-size:300%;"><font color="#35052d">Jak na razie to mało widać.. jak widać..</font></p>
-<p style="text-align:center; font-size:200%;"><font color="#6a3260">   Małymi kroczkami..      </font></p>
 <form method="post" action=".">
     {% csrf_token %}
     Wprowadź Numer: <input type="number" name="numer"> <br>
@@ -25,6 +21,12 @@
     Wprowadź Email: <input type="email" name="email"> <br>
     <button type="submit">Zatwierdź</button><br>
 
+</form>
+
+
+
+<form action="/szablon_get/">
+    <input type="submit" value="zobacz liste" />
 </form>
 
 </body>

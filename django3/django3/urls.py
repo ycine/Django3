@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django_3.views import (strona_glowna, szablon)
+from django_3.views import (strona_glowna, szablon, szablon_get, szablon_delete)
 urlpatterns = [
     path('', strona_glowna),
     path('szablon/', szablon),
     path('admin/', admin.site.urls),
-
+    path('szablon_get/', szablon_get),
+    path('szablon/<int:id>/', szablon, name='szablon_update'),
+    path('delete/<int:id>/', szablon_delete, name='szablon_delete'),
 
 ]
