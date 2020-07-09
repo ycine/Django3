@@ -6,49 +6,52 @@
 <head>
     <meta charset="UTF-8">
     <title>CRUD</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
-<body bgcolor="coral">
-<h1><font color="#1f6fyf">CRUD GET</font> </h1>
-
-
-<form action="/szablon/">
-    <input type="submit" value="wprowadz obiekty" />
-</form>
+<body class="bg-light">
 
 <!-- TUTAJ W PETLI FOR JEST WARTOSC ZE SLOWNIKA CONTEXT W VIEW -->
-
+<div class="container">
+    <h1>CRUD - READ </h1>
+    <h1 class="display-4"> Lista obiektów w bazie</h2>
+    <hr>
+    <div class="jumbotron" >
+        <h1 class="mt-5">CRUD - UPDATE/DELETE </h1>
 {% block content1 %}
         {% for i in obiekty %}
-          <p>{{i.numer}} 
-           {{i.imie}}
-           {{i.nazwisko}}
-           {{i.email}}</p>
-           
-            <!-- <a href="{% url 'szablon_update' i.id %}">upd</a> -->
-           <form action="{% url 'szablon_update' i.id %}" style="float: left;" >
+            {% if forloop.first %}<div class="row" >{% endif %}
+        <div class="col-4" ><p><h6 >
+         <b>{{i.numer}} </b>
+            {{i.imie}}
+            {{i.nazwisko}}
+            {{i.email}}</h6></p>
+            
+           <form action="{% url 'szablon_update' i.id %}" style="float: left;"  >
                 {% csrf_token %}
-                <button type="submit" >update</button>
+                <button  class="btn btn-outline-primary" type="submit" >Update</button>
             </form>
-            <form action="{% url 'szablon_delete' i.id %}" method="POST" style="float: right:;">
-                {% csrf_token %}
-                <button type="submit" >usun</button>
+            <form action="{% url 'szablon_delete' i.id %}" method="POST" >
+               {% csrf_token %} 
+                <button  type="submit" class="btn btn-outline-danger">Delete</button>
             </form>
-
-            <!-- <form action="{% url 'szablon_update' i.id %}">
-
-                
-
-                <input type="submit" value="update"  />
-                <input type="submit" value="delete" />
-            </form>  -->
+        </div>     
+            {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+            {% if forloop.last %}</div>{% endif %}  
         {% endfor %}
 
 {% endblock content1 %}
 
+            <h1 class="mt-5">CRUD - CREATE </h1>
+    <form action="/szablon/">
+        <input type="submit" value="wprowadz obiekty" class="btn btn-outline-secondary">
+    </form>
+
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
 </body>
 </html>

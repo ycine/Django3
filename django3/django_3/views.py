@@ -35,12 +35,22 @@ def szablon(request, id=0):
     else:
         if id == 0:
             obiekt = Model1Form(request.POST)
+            ob = {"form":obiekt}
         else:
             insta = Model1.objects.get(id=id)
             obiekt = Model1Form(request.POST, instance=insta)
+
+            
         if obiekt.is_valid():
             # obj = Model1.objects.create(**model1form.cleaned_data)
             obiekt.save()
+            # return HttpResponse("data submitted successfully") 
+        else:
+            
+            html = 'we have recieved this form again'
+            return render(request, 'szablon.html', {'obiekt':obiekt})
+            # return HttpResponse(ob) 
+
         return redirect('/szablon_get')
 
 
